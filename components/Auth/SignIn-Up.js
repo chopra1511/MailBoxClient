@@ -88,7 +88,7 @@ const Auth = () => {
             </div>
             <div>
               <button className="btn btn-dark">
-                {isLogin ? "Login" : "Create Account"}
+                {isLogin ? "LOGIN" : "Create Account"}
               </button>
               <br />
               <button
