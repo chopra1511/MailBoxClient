@@ -1,10 +1,11 @@
 import { useState, useRef } from "react";
 import { Fragment } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Navigation from "../Navigation/Navigation";
 import './SignIn-Up.css';
 
 const Auth = () => {
-
+    const history = useHistory();
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
     const [isLogin, setIsLogin] = useState(true);
@@ -45,6 +46,7 @@ const Auth = () => {
             }
         })
         .then((data) => {
+            history.replace('/welcome');
             console.log(data);
         })
         .catch((err) => {
