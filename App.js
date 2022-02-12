@@ -10,7 +10,7 @@ function App() {
         <Route path="/" exact>
           <Auth />
         </Route>
-        <Route path="/welcome" exact>
+        <Route path="/welcome" >
           <Welcome />
         </Route>
       </Switch>
