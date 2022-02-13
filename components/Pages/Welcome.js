@@ -8,8 +8,7 @@ const Welcome = (props) => {
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <h3>Welcome to Your Mail Box!</h3>
         </nav>
-          <TextEditor />
-          
+          <TextEditor />  
       </Fragment>
     );
 };
