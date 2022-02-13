@@ -11,6 +11,8 @@ const TextEditor = (props) => {
     const [text , setText] = useState('');
     const mailEntered = useRef();
     const subEntered = useRef();
+
+   
    
     const submitHandler = (event) => {
         event.preventDefault();
@@ -36,6 +38,8 @@ const TextEditor = (props) => {
           .then((data) => {
             console.log(data);
           });
+
+         
     }
 
 
@@ -83,69 +87,3 @@ const TextEditor = (props) => {
 
 export default TextEditor;
 
-// import { Editor } from "react-draft-wysiwyg";
-// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-// import { EditorState } from "draft-js";
-// import React from "react";
-// import { Component } from "react";
-
-// export default class TextEditor extends Component{
-//     //  mailEntered = useRef();
-//     //  subEntered = useRef();
-//     //  bodyEntered = useRef();
-
-//      state = {
-//       editorState: EditorState.createEmpty(),
-//     };
-
-//      onEditorStateChange = (editorState) => {
-//         this.setState({
-//             editorState,
-//         })
-//     }
-
-//      submitHandler = (event) => {
-//         event.preventDefault();
-
-//         // let mail = this.mailEntered.current.value;
-//         // let sub = this.subEntered.current.value;
-//         // let body = this.bodyEntered.current.value;
-//         // console.log(mail,sub,body);
-//     }
-
-//     render() {
-//         const {editorState} = this.state;
-
-//         return (
-//           <form onSubmit={this.submitHandler}>
-//             <div class="input-group mb-3">
-//               <span class="input-group-text" id="basic-addon1">
-//                 To:
-//               </span>
-//               <input
-//                 ref={this.mailEntered}
-//                 type="mail"
-//                 class="form-control"
-//                 aria-label="Username"
-//                 aria-describedby="basic-addon1"
-//               />
-//             </div>
-//             <textarea
-//                 ref={this.subEntered}
-//               class="form-control"
-//               id="exampleFormControlTextarea1"
-//               rows="1"
-//             ></textarea>
-//             <Editor
-//                 ref={this.bodyEntered}
-//               editorState={editorState}
-//               toolbarClassName="toolbarClassName"
-//               editorClassName="editorClassName"
-//               onEditorStateChange={this.onEditorStateChange}
-//             />
-//             <button className="btn btn-success">Send</button>
-//           </form>
-//         );
-//     }
-
-// };

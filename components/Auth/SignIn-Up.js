@@ -1,10 +1,13 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { Fragment } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import Navigation from "../Navigation/Navigation";
+import AuthContext from "../../store/mail-context";
 import './SignIn-Up.css';
 
 const Auth = () => {
+
+    const aCtx = useContext(AuthContext);
+
     const history = useHistory();
     const emailInputRef = useRef();
     const passwordInputRef = useRef();
@@ -37,6 +40,7 @@ const Auth = () => {
         .then((res) => {
             if (res.ok) {
             console.log("User Logged in");
+            history.replace("/welcome");
             return res.json();
             } else {
             return res.json().then((data) => {
@@ -46,7 +50,7 @@ const Auth = () => {
             }
         })
         .then((data) => {
-            history.replace('/welcome');
+            aCtx.login(data.idToken)
             console.log(data);
         })
         .catch((err) => {
@@ -60,7 +64,6 @@ const Auth = () => {
 
     return (
       <Fragment>
-        <Navigation />
         <div className="card">
           <h1 className="h3 mb-3 fw-normal">{isLogin ? "Login" : "Sign Up"}</h1>
           <form onSubmit={submitHandler}>
