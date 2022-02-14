@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Fragment } from "react/cjs/react.production.min";
+import { Fragment } from "react";
+
 
 const Inbox = (props) => {
   const [mails, setMail] = useState([]);
@@ -18,6 +19,22 @@ const Inbox = (props) => {
       setMail(mData);
       console.log(data);
     });
+
+    const deleteHandler = (val) => {
+        fetch(
+          `https://expense-36826-default-rtdb.firebaseio.com/mailData/${val.target.id}.json`,
+          {
+            method: "DELETE",
+          }
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("Mail Successfully Deleted");
+            console.log(data);
+          });
+    }
+
+    
 
   return (
     <Fragment>
@@ -41,16 +58,20 @@ const Inbox = (props) => {
       </nav>
       <div className="card edit">
         {mails.map((data) => (
-          <a className="navbar-brand" href=" ">
-            <button className="btn btn-light ">
-              <div className="row">
-                <div className="col">{data.email}</div>
-                <div className="col">{data.sub}</div>
-                <div className="col">{data.body}</div>
-              </div>
-            </button>
-            <button className="btn btn-danger">X</button>
-          </a>
+          <div className="row">
+            <div className="col">{data.email}</div>
+            <div className="col">{data.sub}</div>
+            <div className="col">{data.body}</div>
+            <div className="col">
+              <button
+                className="btn btn-outline-danger"
+                id={data.id}
+                onClick={deleteHandler}
+              >
+                Delete
+              </button>
+            </div>
+          </div>
         ))}
       </div>
     </Fragment>
